@@ -1,0 +1,681 @@
+/* PatientForm.css */
+
+:root {
+  --primary-color: #667eea;
+  --secondary-color: #764ba2;
+  --accent-color: #f093fb;
+  --accent-dark: #f5576c;
+  --success-color: #10b981;
+  --error-color: #ef4444;
+  --warning-color: #f59e0b;
+  --text-dark: #1a202c;
+  --text-light: #718096;
+  --bg-light: #f7fafc;
+  --border-color: #e2e8f0;
+}
+
+/* Main Wrapper (compact, signup/login colors) */
+.patient-form-wrapper {
+  min-height: 80vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 24px 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.patient-form-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 20% 50%, rgba(240, 147, 251, 0.12) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Container (match signup/login compact layout) */
+.patient-form-container {
+  max-width: 720px; /* narrower container for compact layout */
+  margin: 18px auto;
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  animation: slideIn 0.35s ease;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Header - slightly more compact */
+.form-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20px 18px 24px;
+  color: white;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.form-header::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 14px;
+  background: white;
+  border-radius: 50% 50% 0 0;
+}
+
+.form-header-icon {
+  width: 56px;
+  height: 56px;
+  background: rgba(255,255,255,0.18);
+  backdrop-filter: blur(8px);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 14px;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.form-header h1 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.form-header p {
+  font-size: 0.95rem;
+  opacity: 0.95;
+}
+
+/* Form Content (compact spacing) */
+.form-content {
+  padding: 20px 18px 22px;
+  display: grid;
+  grid-template-columns: 1fr 280px; /* narrower side column */
+  gap: 16px;
+  align-items: start;
+}
+
+/* Left: inputs area */
+.form-main {
+  width: 100%;
+}
+
+/* Right: contextual info and suggestions */
+.form-side {
+  background: linear-gradient(180deg, rgba(102,126,234,0.06), rgba(118,75,162,0.04));
+  padding: 16px;
+  border-radius: 10px;
+  min-height: 120px;
+  font-size: 0.95rem;
+  color: var(--text-dark);
+}
+
+/* Compact Form Group */
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-label { font-size: 0.9rem; margin-bottom: 6px; }
+
+/* Inputs match signup/login */
+.form-input,
+.form-textarea,
+.form-select,
+.form-control {
+  width: 100%;
+  padding: 10px 12px;
+  border: 2px solid var(--border-color);
+  border-radius: 10px;
+  font-size: 0.92rem;
+  background: white;
+  color: var(--text-dark);
+}
+
+.form-input:focus, .form-textarea:focus, .form-select:focus { box-shadow: 0 0 0 4px rgba(102,126,234,0.08); border-color: var(--primary-color); outline: none; }
+
+.form-textarea { min-height: 100px; }
+
+/* Buttons */
+.btn-primary, .btn-success, .btn-outline-primary {
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 0.95rem;
+}
+
+.btn-sm { padding: 6px 8px; font-size: 0.85rem; }
+
+/* Suggested OTC box */
+.otc-box {
+  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+  border-left: 3px solid #3b82f6;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 0.92rem;
+}
+
+.otc-box strong { color: #1e40af; display:block; margin-bottom:6px; }
+
+/* Small helper and timestamp */
+.small-muted { font-size: 0.82rem; color: var(--text-light); }
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .form-content { grid-template-columns: 1fr; }
+  .patient-form-container { max-width: 720px; }
+}
+
+@media (max-width: 576px) {
+  .form-header { padding: 20px 16px 24px; }
+  .form-content { padding: 20px 16px; }
+  .patient-form-container { margin: 12px; }
+}
+
+/* compact alerts */
+.alert-error, .alert-success { padding: 10px 12px; border-radius: 10px; margin-bottom: 12px; }
+
+/* Minor helpers to target existing markup */
+.container.mt-4 { padding-top: 12px; padding-bottom: 20px; }
+.container.mt-4 .card { border-radius: 12px; padding: 18px; box-shadow: 0 8px 20px rgba(0,0,0,0.06); }
+.container.mt-4 .card .form-control { padding: 10px 12px; border-radius: 10px; }
+.container.mt-4 h3 { margin-bottom: 6px; }
+.container.mt-4 .text-muted { font-size: 0.85rem; }
+
+/* Finish */
+
+
+/* Progress Bar */
+.progress-container {
+  margin-bottom: 35px;
+}
+
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.progress-label span {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.progress-label .progress-percentage {
+  color: var(--primary-color);
+}
+
+.progress-bar-container {
+  width: 100%;
+  height: 8px;
+  background: var(--bg-light);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  border-radius: 10px;
+  transition: width 0.4s ease;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+/* Form Group */
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+
+.form-label svg {
+  color: var(--primary-color);
+  flex-shrink: 0;
+}
+
+.required-badge {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: white;
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-weight: 600;
+  margin-left: 4px;
+}
+
+.form-input,
+.form-textarea,
+.form-select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  background: white;
+  color: var(--text-dark);
+  font-family: inherit;
+}
+
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: #cbd5e0;
+}
+
+.form-textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.form-select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23718096' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 40px;
+}
+
+/* Helper Text */
+.form-helper {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  margin-top: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.form-helper svg {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+}
+
+/* Checkbox Group */
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: white;
+}
+
+.checkbox-item:hover {
+  border-color: var(--primary-color);
+  background: rgba(102, 126, 234, 0.05);
+}
+
+.checkbox-item input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: var(--primary-color);
+}
+
+.checkbox-item label {
+  cursor: pointer;
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  flex: 1;
+}
+
+/* Radio Group */
+.radio-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+}
+
+.radio-item {
+  position: relative;
+}
+
+.radio-item input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.radio-card {
+  padding: 16px;
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: white;
+}
+
+.radio-item:hover .radio-card {
+  border-color: var(--primary-color);
+  transform: translateY(-2px);
+}
+
+.radio-item input[type="radio"]:checked + .radio-card {
+  border-color: var(--primary-color);
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+}
+
+.radio-card .radio-icon {
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+.radio-card strong {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  font-weight: 600;
+}
+
+/* Error Alert */
+.alert-error {
+  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+  border-left: 4px solid var(--error-color);
+  color: #991b1b;
+  padding: 14px 16px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  animation: shake 0.5s ease;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+.alert-error svg {
+  flex-shrink: 0;
+  color: var(--error-color);
+}
+
+/* Success Alert */
+.alert-success {
+  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+  border-left: 4px solid var(--success-color);
+  color: #065f46;
+  padding: 14px 16px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.alert-success svg {
+  flex-shrink: 0;
+  color: var(--success-color);
+}
+
+/* Info Box */
+.info-box {
+  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+  border-left: 4px solid #3b82f6;
+  padding: 16px;
+  border-radius: 12px;
+  margin-bottom: 24px;
+}
+
+.info-box-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  color: #1e40af;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+
+.info-box-title svg {
+  color: #3b82f6;
+}
+
+.info-box-content {
+  color: #1e3a8a;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* Button Group */
+.button-group {
+  display: flex;
+  gap: 12px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+
+.btn-primary,
+.btn-secondary,
+.btn-outline {
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: none;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  flex: 1;
+}
+
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background: var(--bg-light);
+  color: var(--text-dark);
+  border: 2px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+  background: white;
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+}
+
+.btn-outline:hover {
+  background: var(--primary-color);
+  color: white;
+}
+
+/* Loading Spinner */
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* File Upload */
+.file-upload-area {
+  border: 2px dashed var(--border-color);
+  border-radius: 12px;
+  padding: 32px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: var(--bg-light);
+}
+
+.file-upload-area:hover {
+  border-color: var(--primary-color);
+  background: rgba(102, 126, 234, 0.05);
+}
+
+.file-upload-icon {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  color: white;
+}
+
+.file-upload-text {
+  color: var(--text-dark);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.file-upload-hint {
+  color: var(--text-light);
+  font-size: 0.85rem;
+}
+
+/* Divider */
+.form-divider {
+  height: 1px;
+  background: var(--border-color);
+  margin: 32px 0;
+  position: relative;
+}
+
+.form-divider::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 0 16px;
+  color: var(--text-light);
+  font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .patient-form-wrapper {
+    padding: 20px 15px;
+  }
+
+  .form-header {
+    padding: 30px 25px 40px;
+  }
+
+  .form-header h1 {
+    font-size: 1.6rem;
+  }
+
+  .form-content {
+    padding: 30px 25px;
+  }
+
+  .radio-group {
+    grid-template-columns: 1fr;
+  }
+
+  .button-group {
+    flex-direction: column;
+  }
+
+  .btn-primary,
+  .btn-secondary,
+  .btn-outline {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-header {
+    padding: 25px 20px 35px;
+  }
+
+  .form-header h1 {
+    font-size: 1.4rem;
+  }
+
+  .form-header-icon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .form-content {
+    padding: 25px 20px;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+}

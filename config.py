@@ -1,0 +1,5 @@
+MONGO_URI = "mongodb://localhost:27017"
+DB_NAME = "healthcare_chatbot"
+SECRET_KEY = "supersecretkey"
+MODEL_PATH = "model/MyFinetunedModel"
+BASE_MODEL = "google/flan-t5-base"
